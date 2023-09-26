@@ -76,6 +76,17 @@ function endQuiz() {
 function getNextQuestion() {
     let question= quizData [questionIndex];
     questionEl.textContent= question.question;
+    choicesEl.innerHTML= "";
+
+    for(let i=0; i<question.choices.length; i++){
+        let choice= question.choices[i];
+        let btn = document.createElement("button");
+        btn.setAttribute("class", "choice");
+        btn.setAttribute("value", choice);
+
+        btn.textContent= i+1+". "+choice;
+        choicesEl.appendChild(btn);
+    }
 
 }
 
