@@ -36,3 +36,11 @@ body{
 
 
 }
+.choices{
+
+
+
+}
+.choices button {
+    display: block;
+  }

@@ -22,7 +22,16 @@ const quizData = [
     // Add more questions here
 ];
 
-let timer = 60;
+let timeRemaining = 120;
+let timerId;
+let questionIndex=0;
+
+let timerEl= document.getElementById("ctDwn");
+let choicesEl= document.getElementById("choices");
+let questionsEl= document.getElementById("questions");
+let startButtonEl= document.getElementById("startButton");
+let startDivEl= document.getElementById("start-div");
+startButtonEl.onclick= startQuiz;
 
 function displayInquiry() {
 
@@ -38,7 +47,9 @@ function checkResponse() {
 
 }
 
-function startTimer() {
+function startQuiz() {
+    console.log("startButton click, start quiz function called");
+    startDivEl.setAttribute("class", "hide");
 
 
 
