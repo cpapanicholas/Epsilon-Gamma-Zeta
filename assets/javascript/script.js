@@ -50,9 +50,30 @@ function checkResponse() {
 function startQuiz() {
     console.log("startButton click, start quiz function called");
     startDivEl.setAttribute("class", "hide");
+    questionsEl.removeAttribute("class");
 
+    timerId=setInterval(oneSecHandler, 1000);
 
+    timerEl.textContent=timeRemaining;
 
+    getNextQuestion();
+}
+
+function oneSecHandler() {
+    timeRemaining--;
+    timerEl.textContent=timeRemaining;
+
+    if(timeRemaining <=0) {
+        endQuiz();
+    }
+}
+
+function endQuiz() {
+    //tbd
+}
+
+function getNextQuestion() {
+    //tbd
 }
 
 function decreaseTime() {
