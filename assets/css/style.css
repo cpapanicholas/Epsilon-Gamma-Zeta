@@ -21,3 +21,18 @@ body{
     top: 5px;
     right: 5px;
 }
+.quiz-wrapper{
+    margin: 90px auto 0 auto;
+    max-width: 550px;
+}
+
+.hide{
+    display: none;
+}
+
+.start-div{
+    text-align: center;
+
+
+
+}
