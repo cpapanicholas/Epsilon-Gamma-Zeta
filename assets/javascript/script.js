@@ -29,6 +29,7 @@ let questionIndex=0;
 let timerEl= document.getElementById("ctDwn");
 let choicesEl= document.getElementById("choices");
 let questionsEl= document.getElementById("questions");
+let questionEl= document.getElementById("question");
 let startButtonEl= document.getElementById("startButton");
 let startDivEl= document.getElementById("start-div");
 startButtonEl.onclick= startQuiz;
@@ -73,7 +74,9 @@ function endQuiz() {
 }
 
 function getNextQuestion() {
-    //tbd
+    let question= quizData [questionIndex];
+    questionEl.textContent= question.question;
+
 }
 
 function decreaseTime() {
