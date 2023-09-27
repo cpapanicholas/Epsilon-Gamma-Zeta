@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function () {
 const quizData = [
     {
         question: "What element in html is for paragraphs?",
@@ -61,7 +62,7 @@ function checkResponse(event) {
     console.log("Correct Answer:", correctAnswer);
 
 
-    if (selectedChoice === quizData[currentQuestion].choices[correctAnswer]) {
+    if (selectedChoice.trim() === correctAnswer) {
         score++;
         scoreEl.textContent = score;
     } else {
@@ -91,10 +92,11 @@ function getNextQuestion() {
         let choice = question.choices[i];
         let btn = document.createElement("button");
         btn.classList.add("choice");
-        btn.textContent = i + 1 + ". " + choice;
+        btn.textContent = choice; 
         btn.addEventListener("click", checkResponse);
         choicesEl.appendChild(btn);
     }
+    questionIndex++;
 }
 
 function oneSecHandler() {
@@ -113,4 +115,4 @@ function endQuiz() {
 }
 
 
-
+})
