@@ -19,6 +19,7 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
 
-LINK:
+LINK: https://cpapanicholas.github.io/Epsilon-Gamma-Zeta/
 
-SS:
+SS: ![image](https://github.com/cpapanicholas/Epsilon-Gamma-Zeta/assets/144556211/3e076d67-7a0f-4d2e-9813-f8799ee497a9)
+
