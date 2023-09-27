@@ -35,6 +35,7 @@ let questionEl= document.getElementById("question");
 let startButtonEl= document.getElementById("startButton");
 let startDivEl= document.getElementById("start-div");
 let scoreEl = document.getElementById("score");
+
 startButtonEl.onclick= startQuiz;
 
 let quizStartPrompt = "Hi welcome to my coding quiz, you have 50 seconds to complete it.  For every question you get wrong you lose 10 seconds, if there isn't any time left you lose!  Are you ready?";
@@ -42,8 +43,8 @@ const firstMessage = alert(quizStartPrompt);
 
 function startQuiz() {
     console.log("startButton click, start quiz function called");
-    startDivEl.setAttribute("class", "hide");
-    questionsEl.removeAttribute("class");
+    startDivEl.style.display = "none";
+    questionsEl.style.display = "block";
 
     timerId=setInterval(oneSecHandler, 1000);
 
@@ -54,9 +55,13 @@ function startQuiz() {
 
 function checkResponse(event) {
     const selectedChoice = event.target.textContent;
-    const correctAnswerIndex = quizData[currentQuestion].correctAnswer;
+    const correctAnswer = quizData[currentQuestion].correctAnswer;
 
-    if (selectedChoice === quizData[currentQuestion].choices[correctAnswerIndex]) {
+    console.log("Selected Choice:", selectedChoice);
+    console.log("Correct Answer:", correctAnswer);
+
+
+    if (selectedChoice === quizData[currentQuestion].choices[correctAnswer]) {
         score++;
         scoreEl.textContent = score;
     } else {
