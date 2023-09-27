@@ -5,7 +5,7 @@ const quizData = [
         correctAnswer: 0,
     },
     {
-        question: "",
+        question: "What",
         choices: ["Choice X", "Choice Y", "Choice Z", "Choice"],
         correctAnswer: 1,
     },
@@ -22,7 +22,11 @@ const quizData = [
     // Add more questions here
 ];
 
-let timeRemaining = 120;
+let currentQuestion = 0;
+let score = 0;
+
+
+let timeRemaining = 35;
 let timerId;
 let questionIndex=0;
 
@@ -32,9 +36,11 @@ let questionsEl= document.getElementById("questions");
 let questionEl= document.getElementById("question");
 let startButtonEl= document.getElementById("startButton");
 let startDivEl= document.getElementById("start-div");
+let scoreEl = document.getElementById("score")
 startButtonEl.onclick= startQuiz;
 
 function displayInquiry() {
+    prompt("You have 35 seconds to complete this quiz.  If you get a question wrong you lose 10 seconds to complete the quiz.  Are you ready to play?")
 
 
 
@@ -42,7 +48,20 @@ function displayInquiry() {
 
 }
 
-function checkResponse() {
+function checkResponse(event) {
+    const userResponse = event.target.textContent;
+    const correctAnswer = question[currentQuestion].answer;
+
+    if (selectedChoices === correctAnswer) {
+        score++;
+        .textContent = score;   
+
+
+
+
+
+
+    }
 
 
 
