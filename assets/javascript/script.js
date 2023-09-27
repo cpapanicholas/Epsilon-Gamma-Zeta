@@ -24,8 +24,6 @@ const quizData = [
 
 let currentQuestion = 0;
 let score = 0;
-
-
 let timeRemaining = 50;
 let timerId;
 let questionIndex=0;
@@ -55,30 +53,30 @@ function startQuiz() {
 }
 
 function checkResponse(event) {
-    const selectedChoices = event.target.textContent;
-    const correctAnswer = question[currentQuestion].answer;
+    const selectedChoice = event.target.textContent;
+    const correctAnswerIndex = quizData[currentQuestion].correctAnswer;
 
-    if (selectedChoices === correctAnswer) {
+    if (selectedChoice === quizData[currentQuestion].choices[correctAnswerIndex]) {
         score++;
-        scoreEl.textContent = score;  
-        currentQuestion++;  
-        if (currentQuestion < question.length){
-            showQuestion()
-        } else (selectedChoices !== correctAnswer); {
-                timeLeft = -10
-        
-            }
-        
-
-    
-
+        scoreEl.textContent = score;
+    } else {
+        timeRemaining -= 10;
+        if (timeRemaining <= 0) {
+            endQuiz();
+        } else {
+            alert("Incorrect! Try again.");
+        }
+    }
 
     currentQuestion++;
 
-    if (currentQuestion < question.length);
-    
+    if (currentQuestion < quizData.length) {
+        getNextQuestion();
+    } else {
+        endQuiz();
+    }
 }
-}
+
 function getNextQuestion() {
     let question= quizData [questionIndex];
     questionEl.textContent= question.question;
@@ -111,10 +109,7 @@ function endQuiz() {
     if (retry) {
         restartQuiz();
     } else {
-        alert("Quiz Over! Your score: ${score}")
-    } else {
-        alert("Quiz Completed! Your score: ${score}")
-    }
+        alert("Quiz Over! Your score: ${score}");}
 
     
     
@@ -124,17 +119,6 @@ function endQuiz() {
     }
 }
 
-
-
-function decreaseTime() {
-
-
-
-
-
-
-
-}
 
 function calcScore() {
 
