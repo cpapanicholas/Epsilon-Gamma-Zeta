@@ -37,12 +37,17 @@ let startButtonEl= document.getElementById("startButton");
 let startDivEl= document.getElementById("start-div");
 let scoreEl = document.getElementById("score");
 
-startButtonEl.onclick= startQuiz;
+startButtonEl.addEventListener("click", startQuiz);
 
 let quizStartPrompt = "Hi welcome to my coding quiz, you have 50 seconds to complete it.  For every question you get wrong you lose 10 seconds, if there isn't any time left you lose!  Are you ready?";
 const firstMessage = alert(quizStartPrompt);
 
 function startQuiz() {
+    const userInitials = prompt("Enter your initials:");
+    if (!userInitials) {
+        alert("You must enter your initials to start the quiz.");
+        return;
+    }
     console.log("startButton click, start quiz function called");
     startDivEl.style.display = "none";
     questionsEl.style.display = "block";
@@ -113,6 +118,18 @@ function endQuiz() {
     
     alert(`Quiz Over! Your score: ${score}`);
 }
+
+const userInitials = prompt("Enter your initials:");
+const userScore = score; // Assuming 'score' contains the user's score
+
+
+const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+
+highScores.push({ initials: userInitials, score: userScore });
+
+
+localStorage.setItem("highScores", JSON.stringify(highScores));
 
 
 })
