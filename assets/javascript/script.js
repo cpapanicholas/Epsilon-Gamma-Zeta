@@ -2,22 +2,22 @@ const quizData = [
     {
         question: "What element in html is for paragraphs?",
         choices: ["<p>", "<a>", "<article>", "<h1>"],
-        correctAnswer: 0,
+        correctAnswer: "<p>",
     },
     {
         question: "What element in css is used to change the background color?",
         choices: ["color", "backgroundcolor", "colorbackground", "ocapcity"],
-        correctAnswer: 1,
+        correctAnswer: "backgroundcolor",
     },
     {
         question: "What element in html can be used to seperate parts of the body?",
         choices: ["<span>", "<section>", "<header>", "<footer>"],
-        correctAnswer: 1,
+        correctAnswer: "<section>",
     },
     {
         question: "What element in html is used to link a css document?",
         choices: ["<a>", "<p>", "<link>", "<href>"],
-        correctAnswer: 2,
+        correctAnswer: "<link>",
     },
     // Add more questions here
 ];
@@ -78,20 +78,18 @@ function checkResponse(event) {
 }
 
 function getNextQuestion() {
-    let question= quizData [questionIndex];
-    questionEl.textContent= question.question;
-    choicesEl.innerHTML= "";
+    const question = quizData[questionIndex];
+    questionEl.textContent = question.question;
+    choicesEl.innerHTML = "";
 
-    for(let i=0; i<question.choices.length; i++){
-        let choice= question.choices[i];
+    for (let i = 0; i < question.choices.length; i++) {
+        let choice = question.choices[i];
         let btn = document.createElement("button");
-        btn.setAttribute("class", "choice");
-        btn.setAttribute("value", choice);
-
-        btn.textContent= i+1+". "+choice;
+        btn.classList.add("choice");
+        btn.textContent = i + 1 + ". " + choice;
+        btn.addEventListener("click", checkResponse);
         choicesEl.appendChild(btn);
     }
-
 }
 
 function oneSecHandler() {
@@ -104,33 +102,10 @@ function oneSecHandler() {
 }
 
 function endQuiz() {
-    if(timeRemaining === 0) {
-    const retry = confirm("You ran out of time!  Would you like to try again?");
-    if (retry) {
-        restartQuiz();
-    } else {
-        alert("Quiz Over! Your score: ${score}");}
-
+    clearInterval(timerId);
     
-    
-
-
-
-    }
+    alert(`Quiz Over! Your score: ${score}`);
 }
 
-
-function calcScore() {
-
-
-
-
-}
-
-function hi_score() {
-
-
-
-}
 
 
